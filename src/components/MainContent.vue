@@ -10,11 +10,13 @@
         Sua lista está vazia, selecione ingredientes para iniciar.
       </p>
     </section>
+    <IngredientsSelect />
   </main>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import IngredientsSelect from './IngredientsSelect.vue';
 
 const ingredientes = ref(['alho', 'oregano', 'manteiga']);
 </script>
