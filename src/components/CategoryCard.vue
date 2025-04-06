@@ -2,10 +2,10 @@
   <article class="categoria">
     <header class="categoria__cabecalho">
       <img :src="`/imagens/icones/categorias_ingredientes/${category.image}`" alt="" class="categoria_imagem">
-      <h2 class="paragrafo-lg categoria__nome">{{category.name}}</h2>
+      <h2 class="paragrafo-lg categoria__nome">{{ category.name }}</h2>
       <ul class="categoria_ingredientes">
         <li v-for="(ingredient, index) in props.category.ingredients" :key="index">
-          {{ ingredient }}
+          <Tag :text="ingredient"/>
         </li>
       </ul>
     </header>
@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import Tag from '@/components/Tag.vue';
 import { type ICategory } from '@/interfaces/ICategory.ts';
 
 const props = defineProps<{

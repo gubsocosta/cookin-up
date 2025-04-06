@@ -3,18 +3,21 @@
     <section>
       <span class="subtitulo-lg sua-lista-texto">Sua Lista</span>
       <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-        <li class="ingrediente" v-for="(item, index) in ingredientes" :key="index">{{item}}</li>
+        <li v-for="(item, index) in ingredientes" :key="index">
+          <Tag :text="item" active/>
+        </li>
       </ul>
       <p v-else class="paragrafo lista-vazia">
         <img src="../assets/images/icones/lista-vazia.svg" alt="Icone de pesquisa">
         Sua lista está vazia, selecione ingredientes para iniciar.
       </p>
     </section>
-    <IngredientsSelect />
+    <IngredientsSelect/>
   </main>
 </template>
 
 <script setup lang="ts">
+import Tag from '@/components/Tag.vue';
 import { ref } from 'vue';
 import IngredientsSelect from './IngredientsSelect.vue';
 
@@ -46,18 +49,6 @@ const ingredientes = ref(['alho', 'oregano', 'manteiga']);
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
-}
-
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-  transition: 0.2s;
-  color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
 }
 
 .lista-vazia {
