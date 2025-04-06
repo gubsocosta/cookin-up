@@ -16,7 +16,7 @@
     <p class="paragrafo dica">
       *Atenção: consideramos que você tem em casa, sal, pimenta e água.
     </p>
-    <MainButton :text="'Buscar Receitas'" />
+    <MainButton :text="'Buscar Receitas'" @click="$emit('showRecipes')"/>
   </section>
 </template>
 
@@ -27,7 +27,7 @@ import type { ICategory } from '@/interfaces/ICategory';
 import { getCategories } from '@/services/http';
 import { onMounted, ref } from 'vue';
 
-defineEmits(['addIngredient', 'removeIngredient']);
+defineEmits(['addIngredient', 'removeIngredient', 'showRecipes']);
 
 const categories = ref<ICategory[]>([]);
 

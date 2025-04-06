@@ -1,19 +1,29 @@
 <template>
   <main class="conteudo-principal">
     <PersonalList :ingredients="ingredients"/>
-    <IngredientList
-      @add-ingredient="addIngredient"
-      @removeIngredient="removeIngredient"
-    />
+    <template v-if="optionContent === 'SelectIngredients'">
+      <IngredientList
+        @add-ingredient="addIngredient"
+        @removeIngredient="removeIngredient"
+        @show-recipes="setOptionContent('ShowRecipes')"
+      />
+    </template>
+    <template v-else-if="optionContent === 'ShowRecipes'">
+      <ShowRecipes/>
+    </template>
   </main>
 </template>
 
 <script setup lang="ts">
 import PersonalList from '@/components/PersonalList.vue';
+import ShowRecipes from '@/components/ShowRecipes.vue';
 import { ref } from 'vue';
 import IngredientList from './IngredientList.vue';
 
+type OptionContent = 'SelectIngredients' | 'ShowRecipes';
+
 const ingredients = ref<string[]>([]);
+const optionContent = ref<OptionContent>('SelectIngredients');
 
 function addIngredient (ingredient: string) {
   ingredients.value.push(ingredient);
@@ -25,6 +35,10 @@ function removeIngredient (ingredient: string) {
   if (index !== -1) {
     ingredients.value.splice(index, 1);
   }
+}
+
+function setOptionContent (value: OptionContent) {
+  optionContent.value = value;
 }
 </script>
 
