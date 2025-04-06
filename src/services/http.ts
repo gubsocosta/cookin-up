@@ -7,6 +7,7 @@ export async function getCategories (): Promise<ICategory[]> {
   return categories.map(category => ({
     name: category.nome,
     ingredients: category.ingredientes,
-    label: category.rotulo
+    label: category.rotulo,
+    image: category.imagem,
   }));
 }

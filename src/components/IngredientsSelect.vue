@@ -5,7 +5,9 @@
       Selecione abaixo os ingredientes que você quer usar nesta receita
     </p>
     <ul class="categorias">
-      <li v-for="(item, index) in categories" :key="index">{{ item.name }}</li>
+      <li v-for="(item, index) in categories" :key="index">
+        <CategoryCard :category="item" />
+      </li>
     </ul>
     <p class="paragrafo dica">
       *Atenção: consideramos que você tem em casa, sal, pimenta e água.
@@ -14,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import CategoryCard from '@/components/CategoryCard.vue';
 import type { ICategory } from '@/interfaces/ICategory';
 import { getCategories } from '@/services/http';
 import { onMounted, ref } from 'vue';
