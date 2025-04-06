@@ -1,8 +1,10 @@
 <template>
-  <h1 class="cabecalho receita-ingredientes">Receitas</h1>
-  <p>Resultados encontrados: {{ recipes.length }}</p>
-  <RecipeList :recipes="recipes"/>
-  <MainButton :text="'Editar Lista'" @click="$emit('showIngredients')"/>
+  <section class="mostrar-receitas">
+    <h1 class="cabecalho titulo-receitas">Receitas</h1>
+    <p class="paragrafo-lg resultados-encontrados">Resultados encontrados: {{ recipes.length }}</p>
+    <RecipeList :recipes="recipes"/>
+    <MainButton :text="'Editar Lista'" @click="$emit('showIngredients')"/>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -21,10 +23,20 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.receita-ingredientes {
+.mostrar-receitas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.titulo-receitas {
   color: var(--verde-medio, #3D6D4A);
-  display: block;
   margin-bottom: 1.5rem;
 }
 
+.resultados-encontrados {
+  color: var(--verde-medio, #3D6D4A);
+  margin-bottom: 0.5rem;
+}
 </style>
