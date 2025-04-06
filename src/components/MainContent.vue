@@ -1,17 +1,16 @@
 <template>
   <main class="conteudo-principal">
     <PersonalList :ingredients="ingredientes"/>
-    <IngredientsSelect/>
+    <IngredientsSelected/>
   </main>
 </template>
 
 <script setup lang="ts">
 import PersonalList from '@/components/PersonalList.vue';
 import { ref } from 'vue';
-import IngredientsSelect from './IngredientsSelect.vue';
+import IngredientsSelected from './IngredientsSelected.vue';
 
 const ingredientes = ref(['alho', 'oregano', 'manteiga']);
-
 </script>
 
 <style scoped>

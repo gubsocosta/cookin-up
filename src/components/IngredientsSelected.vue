@@ -6,7 +6,7 @@
     </p>
     <ul class="categorias">
       <li v-for="(item, index) in categories" :key="index">
-        <CategoryCard :category="item" />
+        <CategoryCard :category="item"/>
       </li>
     </ul>
     <p class="paragrafo dica">
@@ -23,7 +23,7 @@ import { onMounted, ref } from 'vue';
 
 const categories = ref<ICategory[]>([]);
 
-onMounted(async() => {
+onMounted(async () => {
   categories.value = await getCategories();
 });
 </script>
