@@ -5,10 +5,12 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   text: string;
-  active: boolean;
-}>();
+  active?: boolean;
+}>(), {
+  active: false
+});
 </script>
 
 <style scoped>
