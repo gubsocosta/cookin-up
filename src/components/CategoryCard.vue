@@ -5,7 +5,7 @@
       <h2 class="paragrafo-lg categoria__nome">{{ category.name }}</h2>
       <ul class="categoria_ingredientes">
         <li v-for="(ingredient, index) in props.category.ingredients" :key="index">
-          <Tag :text="ingredient"/>
+          <SelectableIngrendient :ingredient="ingredient"/>
         </li>
       </ul>
     </header>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import Tag from '@/components/Tag.vue';
+import SelectableIngrendient from '@/components/SelectableIngrendient.vue';
 import { type ICategory } from '@/interfaces/ICategory.ts';
 
 const props = defineProps<{
