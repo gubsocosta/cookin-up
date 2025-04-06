@@ -9,7 +9,7 @@
       />
     </template>
     <template v-else-if="optionContent === 'ShowRecipes'">
-      <ShowRecipes/>
+      <ShowRecipes @show-ingredients="setOptionContent('SelectIngredients')"/>
     </template>
   </main>
 </template>
