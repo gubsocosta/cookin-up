@@ -1,27 +1,17 @@
 <template>
   <main class="conteudo-principal">
-    <section>
-      <span class="subtitulo-lg sua-lista-texto">Sua Lista</span>
-      <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-        <li v-for="(item, index) in ingredientes" :key="index">
-          <Tag :text="item" active/>
-        </li>
-      </ul>
-      <p v-else class="paragrafo lista-vazia">
-        <img src="../assets/images/icones/lista-vazia.svg" alt="Icone de pesquisa">
-        Sua lista está vazia, selecione ingredientes para iniciar.
-      </p>
-    </section>
+    <PersonalList :ingredients="ingredientes"/>
     <IngredientsSelect/>
   </main>
 </template>
 
 <script setup lang="ts">
-import Tag from '@/components/Tag.vue';
+import PersonalList from '@/components/PersonalList.vue';
 import { ref } from 'vue';
 import IngredientsSelect from './IngredientsSelect.vue';
 
 const ingredientes = ref(['alho', 'oregano', 'manteiga']);
+
 </script>
 
 <style scoped>
@@ -35,31 +25,6 @@ const ingredientes = ref(['alho', 'oregano', 'manteiga']);
   flex-direction: column;
   align-items: center;
   gap: 5rem;
-}
-
-.sua-lista-texto {
-  color: var(--coral, #F0633C);
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.ingredientes-sua-lista {
-  display: flex;
-  justify-content: center;
-  gap: 1rem 1.5rem;
-  flex-wrap: wrap;
-}
-
-.lista-vazia {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-
-  color: var(--coral, #F0633C);
-  text-align: center;
 }
 
 @media only screen and (max-width: 1300px) {
