@@ -1,5 +1,5 @@
 <template>
-  <button class="ingrediente" @click="toggleSelect">
+  <button class="ingrediente" @click="toggleSelect(ingredient)">
     <Tag
       :text="props.ingredient"
       :active="selected"
@@ -16,10 +16,18 @@ const props = defineProps<{
   ingredient: string;
 }>();
 
+const emit = defineEmits(['addIngredient', 'removeIngredient']);
+
 const selected = ref(false);
 
-function toggleSelect() {
+function toggleSelect (ingredient: string): void {
   selected.value = !selected.value;
+
+  if (selected.value) {
+    emit('addIngredient', ingredient);
+    return;
+  }
+  emit('removeIngredient', ingredient);
 }
 </script>
 

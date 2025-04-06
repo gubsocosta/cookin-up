@@ -6,7 +6,11 @@
     </p>
     <ul class="categorias">
       <li v-for="(item, index) in categories" :key="index">
-        <CategoryCard :category="item"/>
+        <CategoryCard
+          :category="item"
+          @add-ingredient="$emit('addIngredient', $event)"
+          @remove-ingredient="$emit('removeIngredient', $event)"
+        />
       </li>
     </ul>
     <p class="paragrafo dica">
@@ -20,6 +24,8 @@ import CategoryCard from '@/components/CategoryCard.vue';
 import type { ICategory } from '@/interfaces/ICategory';
 import { getCategories } from '@/services/http';
 import { onMounted, ref } from 'vue';
+
+defineEmits(['addIngredient', 'removeIngredient']);
 
 const categories = ref<ICategory[]>([]);
 

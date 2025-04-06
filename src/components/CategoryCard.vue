@@ -5,7 +5,11 @@
       <h2 class="paragrafo-lg categoria__nome">{{ category.name }}</h2>
       <ul class="categoria_ingredientes">
         <li v-for="(ingredient, index) in props.category.ingredients" :key="index">
-          <SelectableIngrendient :ingredient="ingredient"/>
+          <SelectableIngrendient
+            :ingredient="ingredient"
+            @add-ingredient="$emit('addIngredient', $event)"
+            @remove-ingredient="$emit('removeIngredient', $event)"
+          />
         </li>
       </ul>
     </header>
@@ -19,6 +23,8 @@ import { type ICategory } from '@/interfaces/ICategory.ts';
 const props = defineProps<{
   category: ICategory
 }>();
+
+defineEmits(['addIngredient', 'removeIngredient']);
 </script>
 
 <style scoped>

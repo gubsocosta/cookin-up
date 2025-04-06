@@ -1,7 +1,10 @@
 <template>
   <main class="conteudo-principal">
-    <PersonalList :ingredients="ingredientes"/>
-    <IngredientList/>
+    <PersonalList :ingredients="ingredients"/>
+    <IngredientList
+      @add-ingredient="addIngredient"
+      @removeIngredient="removeIngredient"
+    />
   </main>
 </template>
 
@@ -10,7 +13,19 @@ import PersonalList from '@/components/PersonalList.vue';
 import { ref } from 'vue';
 import IngredientList from './IngredientList.vue';
 
-const ingredientes = ref(['alho', 'oregano', 'manteiga']);
+const ingredients = ref<string[]>([]);
+
+function addIngredient (ingredient: string) {
+  ingredients.value.push(ingredient);
+}
+
+function removeIngredient (ingredient: string) {
+  const index = ingredients.value.indexOf(ingredient);
+
+  if (index !== -1) {
+    ingredients.value.splice(index, 1);
+  }
+}
 </script>
 
 <style scoped>
