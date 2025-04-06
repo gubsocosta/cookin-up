@@ -16,11 +16,13 @@
     <p class="paragrafo dica">
       *Atenção: consideramos que você tem em casa, sal, pimenta e água.
     </p>
+    <MainButton :text="'Buscar Receitas'" />
   </section>
 </template>
 
 <script setup lang="ts">
 import CategoryCard from '@/components/CategoryCard.vue';
+import MainButton from '@/components/MainButton.vue';
 import type { ICategory } from '@/interfaces/ICategory';
 import { getCategories } from '@/services/http';
 import { onMounted, ref } from 'vue';
